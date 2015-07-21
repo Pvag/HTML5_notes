@@ -1,0 +1,1838 @@
+\documentclass[a4paper,11pt]{book}
+
+\usepackage[LGR,T1]{fontenc} % greek letters
+\usepackage[utf8]{inputenc} % accentate in Linux
+%\usepackage[italian]{babel}
+\usepackage[english]{babel}
+\usepackage{bm} % per le lettere greche in grassetto - poi usare \bm{\lettera}
+\usepackage{titling} % per la pagina con titoli, sottotili, ecc.
+\newcommand{\subtitle}[1]{%
+  \posttitle{%
+      \par\end{center}
+      \begin{center}\large#1\end{center}
+      \vskip0.5em}%
+}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\title{HTML5.1x Learn HTML5 from W3C}
+\subtitle{course notes}
+\author{A Student}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\part{HTML}
+
+% -----
+\chapter{What we're going to learn}
+\begin{itemize}
+    \item New and simplified HTML5 tags and microdata
+    \item Play with the audio and video tags
+    \item Draw and animate fun Web graphics
+    \item Discover the newest HTML5 forms
+    \item Understand why accessibility is important
+    \item Test the basic APIs, such as Web storage and geolocation
+    \item Practice coding techniques thanks to multiple interactive examples
+\end{itemize}
+
+% -----
+\chapter{Syllabus}
+
+\section{Live on monday 1 june 2015 - 13:30 UTC - Course introduction and practical information}
+\begin{itemize}
+    \item Course syllabus
+    \item Getting around the course
+    \item Grading and due dates
+    \item Course tools
+    \item Why accessibility is important
+    \item Why internationalisation is important
+    \item Welcome survey
+\end{itemize}
+
+    \subsection{Week 1: HTML basics}
+    \begin{itemize}
+        \item 1.1 Week introduction - Week 1
+        \item 1.2 From HTML1.0 to HTML5
+        \item 1.3 New structural elements
+        \item 1.4 Other elements and attributes
+        \item 1.5 Microdata
+        \item 1.6 Exercises - Week 1
+    \end{itemize}
+
+\section{Live on tuesday 9 june 2015 - 15:00 UTC}
+    \subsection{Week 2: HTML5 Multimedia}
+    \begin{itemize}
+        \item 2.1 Video introduction - Week 2
+        \item 2.2 Streaming multimedia content: the video and audio elements
+        \item 2.3 Subtitles and closed captions
+        \item 2.4 Enhanced HTML5 media players and frameworks
+        \item 2.5 Webcam, microphone: the getUserMedia API
+        \item 2.6 Exercises - Week 2
+    \end{itemize}
+
+\section{Live on tuesday 16 june 2015 - 15:00 UTC}
+    \subsection{Week 3: HTML5 Graphics}
+    \begin{itemize}
+        \item 3.1 Video introduction - Week 3
+        \item 3.2 Basics of HTML5 canvas
+        \item 3.3 Immediate drawing mode: rectangles, text, images
+        \item 3.4 Path drawing mode: lines, circles, arcs, curves and other path drawing methods
+        \item 3.5 Colors, gradients, patterns, shadows, etc.
+        \item 3.6 Exercises - Week 3
+    \end{itemize}
+
+\section{Live on tuesday 23 june 2015 - 15:00 UTC}
+    \subsection{Week 4: HTML5 Animations}
+    \begin{itemize}
+        \item 4.1 Video introduction - Week 4
+        \item 4.2 Basic animation techniques
+        \item 4.3 Canvas and user interaction (keyboard, mouse)
+        \item 4.4 A glimpse of advances canvas functionalities
+        \item 4.5 Exercises - Week 4
+        \item 4.6 Optional exercises: draw an animate monster!
+    \end{itemize}
+
+\section{Live on tuesday 30 june 2015 - 15:00 UTC}
+    \subsection{Week 5: HTML5 Forms}
+    \begin{itemize}
+        \item 5.1 Video introduction - Week 5
+        \item 5.2 Introduction to HTML5 Forms
+        \item 5.3 Accessible forms
+        \item 5.4 New <input> types
+        \item 5.5 New forms attributes
+        \item 5.6 New elements related to forms (output, datalist, etc.)
+        \item 5.7 Form validation API
+        \item 5.8 Examples of powerful HTML5 forms (use of CSS3, webcam, persistence)
+        \item 5.9 Exercises - Week 5
+    \end{itemize}
+
+\section{Live on tuesday 7 july 2015 - 15:00 UTC}
+    \subsection{Week 6: HTML5 Basic APIs}
+    \begin{itemize}
+        \item 6.1 Video introduction - Week 6
+        \item 6.2 HTML5 APIs introduction
+        \item 6.3 HTML5 Cache
+        \item 6.4 The Web Storage API
+        \item 6.5 The File API: reading files (metadata, content, previewing)
+        \item 6.6 Geolocation API
+        \item 6.7 Final exam: more exercises
+    \end{itemize}
+
+
+% -----
+\chapter{Lessons 1 - HTML Basics}
+    \section{Why accessibility is important}
+    Always satisfy these aspects:
+    \begin{itemize}
+        \item Page title must be properly set, coincise, efficient.
+            The page title is the first item that is played out by a browser
+            in "help mode" for people with accessibility differences.
+        \item Alt text must alwaye be present within <img> tags
+        \item For other easy checks see the WAI Easy Checks page
+    \end{itemize}
+    \emph{Internationalization} is the design and development of a product, application
+    or document content that enables easy localization for target audiences that
+    vary in culture, region or language.
+    \emph{Localization} refers to the adaptation of it to meet the language, cultural
+    and other requirements of a specific target market.
+    \section{Character encoding}
+    \begin{verbatim}
+        <!DOCTYPE html>
+        <html lan="en">
+        <head>
+        <meta charset="UTF-8"/>
+    \end{verbatim}
+
+    Microdata are pieces of data that will be looked at by search engines.
+    
+    \section{A minimal HTML5 document}
+    \begin{verbatim}
+        <!DOCTYPE html>
+        <html lang="en">
+            <head>
+                <meta charset="utf-8">
+                <title>Page Title</title>
+                <link rel="stylesheet" href="style.css">
+                <script src="script.js"></script>
+            </head>
+            <body>
+                ... <!-- The rest is content -->
+            </body>
+        </html>
+    \end{verbatim}
+
+    \section{Improvements towards simplicity}
+    \begin{itemize}
+    \item No more closing tags required (unless for the ones that divide a particular area
+    of the document).
+    \item No more quotes for the values of attributes!
+    \end{itemize}
+
+    \section{Basic structure}
+    \includegraphics[scale=.5]{img/pictureOfStructuringElements.jpg}
+
+    \section{New tags}
+    Take a look at \emph{section} and \emph{article}. They can each contain the other, to better present
+    the content.
+
+    \includegraphics[scale=.45,angle=90]{img/h5d-sectioning-flowchart.png}
+
+    \section{Best practices to use <section>, <article>, <nav>, <aside>}
+    These are called \emph{sectioning elements}, since they cut documents in sections.
+    Headings start implied sections.
+    \begin{itemize}
+        \item Always add a heading in each sectioning element (section, article, nav, aside),
+            but also after the body element (called a "sectioning root").
+            This is for accessibility reasons.
+
+            In this case:
+            \begin{verbatim}
+            <section>
+            <header>
+                <h1>Summer</h1>
+                <p>Posted by Pvag</p>
+            </header>
+            ...
+            </section>
+            \end{verbatim}
+            a screen reader will say
+            \emph{``Entering section with heading Summer''}
+
+            In this other case:
+            \begin{verbatim}
+            <section>
+            <header>
+                <p class="article title">Summer</p>
+                <p>Posted by Pvag</p>
+            </header>
+            ...
+            </section>
+            \end{verbatim}
+            the screen reader will just say
+            \emph{``Entering section''} \large{AND THIS IS NOT GOOD!}
+
+            Note: body is a sectioning element too, so it is good practice
+            to put a hx (x = 1:6) for it too! Actually, it's the root sectioning
+            element. An alternative to an hx is a header element.
+    \end{itemize}
+
+    \textbf{Recap}: always put a hx (or header) after each sectioning element (body too).
+
+    Example:
+    \begin{verbatim}
+    <body>
+        <h1>Example Blog</h1>
+        <section>
+            <header>
+                <h2>Blog post of april 2015</h2>
+                <p>Posted by Fruttariello</p>
+            </header>
+            <p>Content of the blog post</p>
+        </section>
+    </body>
+    \end{verbatim}
+
+    Best practice example for many hxs: use sections!
+    \begin{verbatim}
+    <body>
+        <h1>Apples</h1>
+        <p>Apples are fruit.</p>
+        <section>
+            <h2>Taste</h2>
+            <p>They taste lovely.</p>
+            <section>
+                <h3>Sweet</h3>
+                <p>Red apples are sweeter than green ones.</p>
+            </section>
+        </section>
+        <section>
+            <h2>Color</h2>
+            <p>Apples come in various colors.</p>
+        </section>
+    </body>
+    \end{verbatim}
+
+    Note that the x of the different hxs must be different in an internal hierarchy,
+    in the sense that the automatic numbering for hxs inside a section, inside another
+    section is not guaranteed by all browsers! So state it explicitly!
+    Note: there are 2 h2 tags: this is permitted, since they are not related (i.e.
+    they are not one within the other!).
+
+    \textbf{Best practice:} visualizing the table of content is good to spot missing hxs (headings)
+    after sectioning content, debugging the structure of the page.
+
+    \section{<main>}
+    If you use <nav>, <header>, <footer> to structure the document, you can also use <main> to
+    identify the main content of the document. Doing so provides a navigable document structure
+    for assistive technology users as well as styling hooks for devs.
+    <main> is subjected to some constraints:
+    \begin{itemize}
+        \item No more than one main are allowed in a document
+        \item It must not be a \textbf{descendent} of an <article>, <aside>, <footer>, <header>, <nav> element.
+    \end{itemize}
+    
+    Note: if you do not want to make the heading visible in the page use a \textbf{CSS offset}, instead of
+    hiding it! This will be handy when properly adding headers to navs, for example and not wanting to
+    show their text. If you don't want to display the heading content after a <nav> or an <aside> element.
+
+    \section{<details> and <summary>}
+    To display a \emph{foldable} zone in an HTML document.
+    The summary is the text beside the arrow icon; the details is the text displayed when we click the arrow
+    and unfold the element.
+
+% -----
+\chapter{Lesson 2 - Multimedia}
+    \section{Streaming multimedia content: the video and audio elements}
+        \subsection{<video>}
+        See someHTML/Video/video.html for and example. The \textbf{controls} attribute renders the play/stop/
+        volume/progress widgets; the \textbf{autoplay} realizes the auto play. The browser will use the first
+        video format that it is able to play or it will choose it based upon its preference over the different
+        formats. The <video> is an member of the DOM, so CSS styling and transformations can be applied, as well
+        as manipulation using the DOM API. NOTE: youtube, Vimeo, DailyMotion and other websites offering videos
+        and commercials on them, are not embeddable in video elements; use and iframe instead. The iframe will
+        embed and rendere the HTML5 video, together with the advertising that come along with it. See
+        \~/Coding/HTML5\_edX/someHTML/Video/videoIframe.html .
+
+        Beware the \emph{Codecs}: each browser has its favourite coded: as of 2015, the most supported is \textbf{H264/mp4}.
+        Encode your videos in the most supported formats!
+        \subsubsection{attributes}
+        \begin{itemize}
+            \item controls : boolean value - true is present
+            \item preload="none" (suggested value for mobile devices)
+                It's a hint, so the browser may ignore it. If autoplay is present, preload is ignored.
+                \begin{itemize}
+                    \item none
+                    \item metadata : length, format
+                    \item auto : the browser will decide - depends on the wi-fi connection and implementation
+                \end{itemize}
+            \item poster="previewImgURL" : watch out: IE puts the first frame as preview image - to change this i need JS
+            \item loop 
+            \item autoplay : no good for mobile devices and for pages with > 1 videos
+        \end{itemize}
+        Recap: for mobile devices set preload="none" and no autoplay (i.e. don't write autoplay, since it's a boolean attribute).
+        Controls, loop and autoplay are \textbf{boolean attributes}.
+
+        \subsection{<audio>}
+        HTML5 is composed of several audio layers:
+        \begin{itemize}
+            \item the <audio> element: it's similar to the <video> element; it's useful to embed an audio player in a web page.
+            \item the WebAudio API (JavaScript): 
+            it is designed for musical application and to add effects to games. It's a pure JavaScript
+            API that supports manipulation of sound sample, music synthesis and sound generation. It also has a set of
+            predefined sound processing modules (reverb, delay, etc.).
+        \end{itemize}
+        See an example at
+        \begin{verse}
+        ~/Coding/HTML5\_edX/someHTML/Audio/audio.html
+        \end{verse}
+
+        \subsection{Styling <video> and <audio> with CSS3}
+        Transitions, Animations and Transforms can be added, since video and audio are full-fledged html elements.
+        See audio\_transitions.html for transform and wsv.html for a cool example of window-wide video, together with some easy JS.
+
+        \subsection{Controlling audio and video with JS}
+        A simple example of video creation in JavaScript:
+        \begin{verbatim}
+            var video = document.createElement("video");
+            video.src = "video.mp4";
+            video.controls = true;
+            document.body.appendChild(video);
+        \end{verbatim}
+        See \href{http://www.w3.org/2010/05/video/mediaevents.html}{this web page} for a live example of the different methods and
+        properties.
+
+\section{Subtitles and Closed Captions}
+	\subsection{The <track> element}
+	There's a difference between subtitles (only words) and captions (description of sounds too).
+	A web server to load the caption (.vtt) file is needed (http:// , file:// won't work!). Furthermore, the MIME
+	type must be specified to text/vtt and charset to utf-8. Here's an example of code to add to an Apache web server:
+	\begin{verse}
+	\begin{verbatim}
+	<Files file_with_captions.vtt>
+	ForceType text/vtt; charset=utf-8
+	</Files>
+	\end{verbatim}
+	\end{verse}
+	Here's an example to add a track file (file with subtitles):
+	\begin{verse}
+	\begin{verbatim}
+	<track src="http://demo.jwplayer.com/html5-report/sintel-
+	 captions.vtt" kind="captions" label="Closed Captions"
+	 default>
+	\end{verbatim}
+	\end{verse}
+	
+	\subsubsection{Important attributes}
+	\begin{itemize}
+	\item \begin{verbatim}crossorigin="anonymous"\end{verbatim} (in the video element: some servers require it)
+	\item \begin{verbatim}kind="captions|subtitles|descriptions|chapters|metadata"\end{verbatim}
+	\item \begin{verbatim}default\end{verbatim} when i want this track to be displayed by default when playing the video,
+		since multiple tracks can be included in a video element (see multipleTracks.html)
+	\item \begin{verbatim}srclang="en|fr|de"\end{verbatim} or other language of the subtitles|chapters|descriptions
+	This must be a BCP 47 Language Tag. This must be present if the kind is set to subtitles.
+	\item \begin{verbatim}label="italian"\end{verbatim} This value will be displayed in the GUI control that is included
+	in the HTML5 default video player.
+	\end{itemize}
+	Note: to insert a chapter vtt file, together with a subtitle/caption vtt file, add another track element
+	inside the video element, with the value \emph{chapter} for the attribute \emph{kind}.
+	\subsubsection{The WebVTT format for subtitles|captions|other}
+	A \textbf{cue} is an id + a starting time + --> + an ending time + a string. Example of a cue:
+	\begin{verbatim}
+	Opening
+	00:00:00.000 --> 00:00:22.000
+	Welcome to our <i>nice film</i>
+	\end{verbatim}
+	HTML tags to format the text are allowed. The id can be a string or a number; it is used in JS with the
+	\begin{verbatim}getCueById(idName)\end{verbatim} method of the TextTrack class.
+	To make the subtitles WebVTT file, use a tool like \url{http://www.amara.org}.
+	CSS attributes can be specified on the same line of the times to position the text. For example,
+	\begin{verbatim}size : 33%\end{verbatim}
+	will make the size of each line to fill the 33\% of the video width, automatically spanning on multiple
+	lines, if needed.
+	
+	Classes can be used to style the text, using the c HTML element, like this:
+	\begin{verbatim}
+	<c.myclass>Whatever you think you know of this man is irrelevant.</c>
+	\end{verbatim}
+	The v tag can be used to style different voices:
+	\begin{verbatim}
+	01:00:10.000-->01:00:12.000
+	<v Tarzan>O-hohoh-ohoh
+	<v Jane>ok
+	\end{verbatim}
+	And then for the CSS part (i guess inside the WebVTT too):
+	\begin{verse}
+	\begin{verbatim}
+	<style type="text/css">
+		::cue(.myclass) {color : red;}
+		::cue(v[voice="Tarzan"]) {color : blue;}
+		::cue(v[voice="Jane"]) {color : green;}
+		::cue(#Opening) {font-size : 150%;}
+	</style>
+	\end{verbatim}
+	\end{verse}
+	\begin{itemize}
+	\item \begin{verbatim}::cue\end{verbatim} is the pseudo-element selector to match cues in the WebVTT file;
+	\item Opening was defined above as id of the overture of the movie;
+	\item The voices are contained inside a kind of a voice array;
+	\item use the . for classes, the \# for ids.
+	\end{itemize}
+	Note: converters from other subtitle format (like .srt) are available; on-the-fly converters are too, like
+	enhanced HTML5 video players and JS libraries (like JS\_videosub).
+	
+	\subsubsection{The track JS API}
+	Using it i can do lots of cool tricks like:
+	\begin{itemize}
+	\item sync a tablature to a musical video
+	\item sync Google Maps and/or Google Street View to a video: while the video plays, the JS code listens
+		to the ontimeupdate event; using the currentTime property of the video i know where i am in the video;
+		i read the data (maybe the tag? Or data can be put inside a cue in some other ways?) corresponding to
+		that time: this data must contain the coordinates of the place that is viewable in that frame; i update
+		Google Maps and/or Street View!
+	\item dynamically building a navigation menu that shows the different chapters in the video
+	\item making an app that creates on-the-fly subtitles/captions.
+	\end{itemize}
+	
+	\section{Enhanced HTML5 media players and frameworks}
+	There are many enhanced video and audio players that can be easily customized through JS APIs. There are
+	JS APIs to create my personal enhanced video and audio players.
+	
+	\section{Webcam, microphone: the getUserMedia API}
+	The getUserMedia API is useful to control a webcam video stream. When dealing with video streams, it is
+	always used in conjunction with the <video> element. It is used redirecting the video stream from the
+	webcam to a video element.
+	
+	Fundamental methods:
+	\begin{itemize}
+	\item navigator.getUserMedia - it looks like this is a property too
+	\item window.URL.createObjectURL(localMediaStream); - this is not from the getUserMedia API
+	\end{itemize}
+	
+	\subsubsection{Working with the microphone}
+	Use the \texttt{getUserMedia({audio:true}, onSuccess, onError)} method.
+	The \href{http://www.w3.org/TR/webrtc/}{W3C WebRTC} - Web Real Time Communication - is another W3C
+	specification for audio/video/data real time communication.
+	
+	The microphone will be used for music web apps, from the \href{http://www.w3.org/TR/webaudio/}{WebAudio API}.
+	
+	\subsubsection{Video constraints}
+	\begin{verse}
+	\begin{verbatim}
+	var vgaConstraints = {
+		video: {
+			mandatory: {
+				maxWidth = 640,
+				maxHeight = 480
+			}
+		}
+	};
+	\end{verbatim}
+	\end{verse}
+	and then use it inside the usual method:
+	\begin{verse}
+	\begin{verbatim}
+	navigator.getUserMedia(vgaConstraints, onSuccess, onError);
+	\end{verbatim}
+	\end{verse}
+	
+\chapter{Lesson 3 - HTML Graphics}
+\section{Video Introduction}
+\section{Basics of HTML5 Canvas}
+	\subsection{Pixel-based / Vector-based}
+	The basic element is the \texttt{<canvas>}. It provides scripts with a resolution-dependent
+	bitmap canvas, which can be used for rendering graphs, game graphics, or other visual images
+	on the fly. The canvas has been designed for pixel-based graphics, while SVG (scalable
+	Vector Graphics) is for vector-based graphics.
+	
+	\subsection{Canvas JS API}
+	It supports many kinds of shapes: line, arc, rectangle, ellipse, curve, text, image.
+	Some drawing styles need to be specified: these will affect the way shapes are drawn
+	(color, drawing width, shadows, etc.). An alpha channel for drawing in transparent mode
+	is also supported, as well as many advanced drawing modes and global filters (blur, etc.).
+	The canvas is also use to display video at 60 fps (useful for games), to display videos
+	with special effects, to display a webcam stream, etc. Note: most modern browsers support
+	hardware acceleration, i.e. the browser's implementation of the canvas API has hardware
+	acceleration support. 3D drawing using the WebGL API is also possible (BabylonJS, ThreeJS,
+	others).
+
+	NOTE!!: It is very important NOT to access elements of the DOM before the
+	page has
+	been loaded entirely! A good way to do this is putting drawing code inside the
+	\texttt{init()}
+	method and specify the attribute and value \texttt{onload="init();"} for the
+	\texttt{body} element. This ensures that the elements of the body have all been
+	loaded; only then the function is executed.
+	A good practice is getting canvas, context, width, height and
+	other relevant properties inside the init method.
+	A complete reference of canvas' properties and methods can be
+	found at \href{https://simon.html5.org/dump/html5-canvas-cheat-sheet.html}{this website}
+	
+	\subsubsection{Fundamental Methods}
+	\begin{itemize}	
+	\item \texttt{canvasReference.getContext(``2d'');}
+	\item \texttt{contextRef.fillRect(0, 0, 80, 100);}
+	\item \texttt{strokeRect(x0, y0, width, height)}
+	\item \texttt{clearRect(x0, y0, width, height)} : erases the specific rectangle; actually,
+				it draws it in a color called ``transparent black''.
+	\item \texttt{fillText('theText', x0, y0)} : note: the coordinates refer to the origin of the base line.
+	\item \texttt{strokeText('theText', x0, y0)} : it has a last optional parameter (maxwidth).
+	\item \texttt{measureText('theText')} : gets all the parameters of theText and the context: the returned
+				object has properties with the same name, like width, height, font, size, shadow, lineWidth, etc.
+	\item \texttt{ctx.moveTo(x0, y0)}
+	\item \texttt{ctx.lineTo(x1, y1)}
+	\item \texttt{ctx.closePath()} : line from last point to first point of the path.
+	\item \texttt{ctx.drawLine(x1, y1, x2, y2, color, width)} : this works in immediate drawing mode (useful when i need
+			to draw just a line).
+	\item \texttt{ctx.arc(xcenter, ycenter, radius, fromTheta1, toTheta2, drawComplementary)} : the angles are positive
+			in the clockwise rotation; Math.PI/2 is bottom vertical.
+	\item \texttt{ctx.arcTo(x1, y1, x2, y2, radius)} : the first tangent passes through the actual point and (x1, y1);
+			the second tangent passes through (x1, y1) and (x2, y2); the radius is the last constraint to define the arc.
+	\item \texttt{ctx.quadraticCurveTo(controlX, controlY, endX, endY)} : it works with 3 points: the context point (i.e.
+			the actual point); the control point; the ending point.
+	\item \texttt{ctx.bezierCurveTo(control1X, control1Y, control2X, control2Y, endX, endY)} : it works with 4 points: the
+			context point (i.e. the actual point); the first control point; the second control point; the ending point.
+			2 tangents are considered: the first from the context point to the first control point: the second from the
+			second control point to the ending point. The midpoint (M1, M2) of each tangent is considered; the midpoint
+			(M3) of the line that connects the 2 control points is considered; the midpoints (M4, M5) of the lines
+			connecting the context point to M3 and M3 to the ending point are used as tangent points for the curve to
+			the lines. So the curve passes through the context point, M4, M5 and the ending point.			
+	\item \texttt{ctx.textBaseline("value")} : vertical alignment.
+	\item \texttt{ctx.textAlign("value")} : horizontal alignment (center, right, left, start, end).
+	\end{itemize}
+	
+	\subsubsection{Fundamental Properties}
+	These affect the resulting canvas object; the value of these properties can be stored and
+	retrieved.
+	\begin{itemize}
+	\item \texttt{fillStyle}: pattern, color or gradient. Any kind of ``fill'' drawing will use the value
+					 of this property. The default value is \begin{verbatim}black\end{verbatim}.
+					 This and other \emph{context properties} can be considered to be
+					 ``global variables'' of the context. NOTE: The color is expressed as a string, e.g.
+					 \texttt{``red''}.
+	\item \texttt{strokeStyle}: defines how the shape's outline should be rendered. Used with \begin{verbatim}
+					   strokeRect\end{verbatim}, for example.
+	\item \texttt{lineWidth}
+	\item \texttt{font} : e.g. \texttt{'italic 20pt Calibri'}
+	\end{itemize}
+	
+	\subsubsection{Transformations (context methods)}
+	\begin{verbatim}
+	\item \texttt{transform(xOffset, yOffset}
+	\item \texttt{rotate(radians)} : positive clockwise.
+	\item \texttt{scale(xFactor, yFactor)}
+	\end{verbatim}
+	Note: the order is important! Follow the order in which these three methods have been presented in the list above!
+	\\ \\ \framebox[1.1\width][c]{Transform ; Rotate ; Scale} .
+
+	\subsubsection{Saving and Restoring the Context}
+	These are context's methods:
+	\begin{itemize}
+	\item \texttt{save()}
+	\item \texttt{restore()}
+	\end{itemize}
+	What will be saved: fillStyle, strokeStyle, lineWidth, previous
+	coordinate system, etc. - all properties affecting the drawing.
+	
+	
+\section{Immediate Drawing Mode: rectangles, text and images}
+	The font property is CSS-compliant and accepts values in the form:
+	\begin{verbatim}
+	[font style][font weight][font size][font face]
+	\end{verbatim}
+	Accepted values are:
+	\begin{itemize}
+	\item \texttt{font style: normal, italic, oblique, inherit}
+	\item \texttt{font weight: normal, bold, bolder, lighter, auto, inherit, 100, 200, 300, 400, 500, 600, 700, 800, 900}
+	\item \texttt{font size: a size in pixels or in points, such as 60pt, 20px, 36px}, etc.
+	\item \texttt{font face: Arial, Calibri, Times, Courier}, etc. Some font faces may not work in all browsers.
+	\end{itemize}
+	Example of setting:
+	\texttt{ctx.font = "italic bold 60pt Courier";}
+	\subsubsection{Drawing an image from an Image object, in a canvas}
+	\begin{itemize}
+	\item Create the Image object
+	\item Load the image (an asynchronous request is sent in the background by the browser).
+	\item Set the onload property of it
+	\item At the end of the loading process - thanks to the function specified as value of onload will be called-
+		the image is actually drawn in the canvas.
+	\end{itemize}
+	E.g.
+	\begin{verbatim}
+	var im = new Image();
+	im.src = "imageAddress" // this loads the image in the background; when it's finished, the function specified
+							// in im.onload is called
+	im.onload = function () {
+		var cnv = getElementById("canvasId");
+		var ctx = cnv.getContext("2d");
+		ctx.drawImage(im);
+	}
+	\end{verbatim}
+	
+	The process is a little bit different when i must \textbf{load inside a canvas an image from an img element}:
+	as usual, \textbf{i must ensure that the image has been completely loaded}! In order to do this, i must set the onload
+	value of the window element to the function that draws the image inside the canvas using the
+	\texttt{drawImage(im)} method. The onload method is not called back until the DOM implementation finished loading
+	all content within a document, all frames within a FRAMESET, or an OBJECT element.
+
+\section{Path Drawing Mode: lines, circles, arcs, curves and other path drawing methods}
+All the instructions are put into a buffer; the drawing methods fire a parallel execution of the instructions.
+It is called \texttt{buffered mode}: the orders are stored in the GPU. Modern GPUs can execute up to hundreds/thousands
+operations in parallel: it is better to use this mode, than stroking, for example using \texttt{strokeRect()}.
+Call the \texttt{ctx.rect(x, y, width, height)}, instead: this method works in buffered mode. This stores the
+rectangles in the buffer; \texttt{ctx.stroke()} and \texttt{ctx.fill()} actually render the rectangles.
+\texttt{ctx.beginPath()} will reset the buffer (empty its content).
+\texttt{ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.moveTo(x2, y2); ctx.stroke()} .
+\textbf{Remember: call \texttt{ctx.beginPath()} to empty the drawing buffer!} Common mistake: draw something twice because you
+didn't remember to empty the drawing buffer. As usual, a good practice is to use \texttt{ctx.save()} and
+\texttt{ctx.restore()} inside any function that manipulates the context.
+
+\section{Colors, Gradients, Patterns, Shadows, etc.}
+Colors can be defined as
+\begin{itemize}
+\item \texttt{'red'}
+\item \texttt{'\#00ff00'}
+\item \texttt{"rgb(0, 0, 255)"}
+\item \texttt{"rgb(0, 0, 255, 0.2)"}
+\end{itemize}
+In the last case, the opacity (\textbf{alpha channel}) is defined to be 0.2, in a scale from 0 to 1, meaning that
+the object will be transparent blue (very transparent, since 0.2 is close to 0 opacity). Remember: \textbf{Opacity}!
+\subsection{Gradients}
+NOTE: if the gradient will be used in different places, make it a global variable and load it in the init() method,
+after the page has loaded (onload).
+\subsubsection{Linear Gradients}
+4 steps:
+\begin{itemize}
+\item \texttt{grad = ctx.createLinearGradient(x1, y1, x2, y2)} : direction of the gradient and starting and ending points
+\item \texttt{grad.addColorStop(p, color)} : p can have values from 0 to 1: this is used to define the colors of the gradient
+\item \texttt{ctx.fillStyle = grad} : set the gradient in the fillStyle property of the context
+\item Draw some shape (e.g. \texttt{fillRect(xa, ya, xb, yb)})
+\end{itemize}
+Notes: the drawn shape will have the colors defined in the gradient in the area of the gradient; outside of it
+the external colors of the gradient will be extended constantly (without change, i.e. without fading, i.e. without gradient).
+\subsubsection{Radial Gradients}
+Same procedure as for the Linear Gradients, but with a different method
+for setting the gradient:
+\begin{verse}
+\texttt{ctx.createRadialGradient(x1, y1, r1, x2, y2, r2)} \end{verse}
+The radial gradient goes from the circle defined by the first
+3 parameters, to the one defined by the last 3 parameters - these are 2 independent circles.
+
+\subsection{Patterns}
+3 steps:
+\begin{itemize}
+\item Define an image object (it could be useful to have this global)
+\item Put the drawing code inside the onload function of the image object - this is good practice, since it will only
+		work on the pattern after the image has been completely loaded in background by the HTTP request!
+		\begin{verse}
+		\begin{verbatim}
+		var img = new Image;
+		img.onload = function() {
+			ctx.fillStyle = ctx.createPattern(img, "repeat");
+			ctx.fillRect(x1, y1, x2, y2);
+		};
+		\end{verbatim}
+		\end{verse}
+\item Specify the source for the image: \texttt{img.src = "url";}
+\end{itemize}
+Note: the second parameter of the \texttt{createPattern} method can have one of these values: (
+\texttt{repeat | repeat-x | repeat-y | no-repeat} ).
+\subsubsection{Drawing multiple images in a pattern}
+Pay attention to the asynchronism of JavaScript! Use a manager to check trigger the drawing function only when each
+image has been completely loaded - use an array to store the images, for example.
+
+\section{Shadows}
+There are 4 properties to draw shadows:
+\begin{verbatim}
+\item \texttt{shadowColor}
+\item \texttt{shadowBlur}
+\item \texttt{shadowOffsetX}
+\item \texttt{shadowOffsetY}
+\end{verbatim}
+Note: unwanted shadows can be removed saving the context, then setting the shadow parameters and then restoring the context;
+what will be drawn next won't have shadows, for example, but many other different combinations are possible.
+
+\section{Styling Lines (context properties)}
+\begin{verbatim}
+\item \texttt{lineWidth}
+\item \texttt{lineCap = "butt" | "square" | "round"}
+\item \texttt{lineJoin = "miter" | "bevel" | "round"}
+\item \texttt{miterLimit} : useful when \texttt{lineJoin} is \texttt{miter}: renders the line as if \texttt{lineJoin}
+			was set to \texttt{bevel}.
+\end{verbatim}
+
+\section{Drawing Tips - Recap}
+\begin{itemize}
+\item \textbf{Attention!} Drawing arcs or other shapes
+	  doesn't clear the buffer! This means that a line connecting the last point in buffer to the first point
+	  of the actual shape will be drawn! Use fill/stroke and then \texttt{ctx.beginPath()} if you don't want the connecting
+	  line!
+\end{itemize}
+
+
+\chapter{Lesson 4 - HTML5 Animations}
+Once, before HTML5, the basic functions were
+\begin{itemize}
+\item \texttt{setInterval(fun, ms)} : fun is repeatedly called every ms
+\item \texttt{setTimeout(fun, ms)}  : fun is called after ms only once
+\end{itemize}
+In addition, CSS backgrounds inside \texttt{<div>} were used, together
+with \texttt{top left width height} properties of the divs to animate
+images on the screen.
+
+\section{Basic Animation Techniques}
+The logic of animating objects is:
+\begin{itemize}
+\item Clear the canvas
+(\texttt{ctx.clearRect(0, 0, canvasWidth, canvasHeight)}) NOTE clear all
+the canvas!
+\item Draw the ctx
+\item Move the graphic object(s)
+\item Loop
+\end{itemize}
+The two aforementioned methods are now completed by the
+\texttt{requestAnimationFrame} API.
+
+Problem using \texttt{setInterval}: if the code takes more time than
+the interval, the function is called before its code has been completely
+executed.
+Other problem: the scheduling is not very accurate, i.e. the ms value may also be not
+always respected.
+
+The updated style, available in HTML5 uses \texttt{requestAnimationFrame(drawingFunction)}, both
+inside the function that calls the drawing function (e.g. init() ), and inside the drawing function
+itself (recursion). This results in much smoother animations - approaching the 60 fps.
+
+Anyway, \texttt{setInterval} can still be used to change some state, like colors or other properties.
+Note: this function returns the unique ID of the action: i can stop calling the function using the function
+\texttt{clearInterval(ID)}. Note: check for existence of ID, before clearing it, i.e.
+\texttt{if (ID) ...}. Anyway, use this method only if the drawing code is trivial, since it can lead
+to rendering problems (partially completed), complex debugging and unexpected behaviour.
+
+The cool difference with using \texttt{setTimeout} is that it will never call itself until the
+drawing code has been completely executed. It must be placed outside from the drawing function
+and also inside of it: this second call won't happen until the previous (drawing) code
+has been completely executed! Problem: the timing may be different than the one we set, since
+the function will not be called until all the previous code has been executed.
+
+It is now clear that both \texttt{setInterval} and \texttt{setTimeout} do not guarantee smooth
+animations, with the exact timing that we ask to them. That's why we should use
+\texttt{requestAnimationFrame}! The advantages of using this method are:
+\begin{itemize}
+\item tt target 60 fps;
+\item it calls the function only once;
+\item the scheduling is more accurate;
+\item high resolution timer (good to make time-based animations)
+\item multiple animations are merged (animations happening at the same time are bundled into
+		a single paint redraw, happening faster, with less CPU cycles);
+\item CPU/GPU optimization, leading to a less battery consumption: the animation will be
+		executed, the objects will be moved, but they won't be drawn, if the tab is not
+		visible or the screen of the device is black, or the app is in background (mobile
+		devices).
+\end{itemize}
+Like the other functions, it returns an ID, that can be used as argument to
+\texttt{cancelAnimationFrame(ID)}.
+
+\section{Canvas and User Interaction (keyboard, mouse)}
+We treat the events made by the user as inputs and we manipulate the structure of the DOM
+as output.
+The events are called DOM events and we use the DOM JavaScript API to create event handlers.
+
+The suggested way to handle events in the DOM is by calling
+\texttt{addEventListener(event)} on the elment that will have the interaction with
+the user that we want to listen. Inside event we'll find informations like the
+mouse button that was pressed, the key that was pressed, the position of the mouse, etc.
+
+Example: adding a listener for keyboard related events (some of them are:
+\texttt{keydown, keyup, keypressed}), tipically to the \texttt{init} method:
+\begin{verse}
+\begin{verbatim}
+	window.addEventListener("keydown", function(event) {
+		if (event.keyCode === 37) { // left arrow
+			// code
+		}
+	}, false);
+\end{verbatim}
+\end{verse}
+See fig. \ref{fig:keycodes} for a list of key codes.
+\begin{figure}[h]
+\caption{A list of keycodes} \label{fig:keycodes}
+\centering
+\includegraphics[width=0.8\textwidth]{./img/JSKeyCodes.jpg}
+\end{figure}
+
+Note: the last parameter of \texttt{addEventListener} is used to specify if
+the ancestors of the element should be listening too.
+
+Note: if i only want to listen to events in my canvas, i must:
+\begin{itemize}
+\item make the canvas focusable including the attribute \texttt{tabindex} and giving
+it a value (e.g. "1");
+\item force the focus on the canvas element calling the \texttt{focus()} method on it
+\item calling \texttt{addEventListener("event", function(event) { // code }, false);},
+		this time on the canvas element!
+\end{itemize}
+A better way consists in setting the focus to the canvas when the cursor enters its
+area, and unset it when the cursor is out of it. I can do that using the
+\texttt{"mouseenter"} and \texttt{"mouseout"} events.
+
+
+\subsection{Events}
+\begin{itemize}
+\item \texttt{keydown}
+\item \texttt{keyup}
+\item \texttt{mouseenter} : fires only once, coming from parent
+\item \texttt{mouseout}
+\item \texttt{mouseleave}
+\item \texttt{mouseover} : fires only once, coming from child or parent
+\item \texttt{mousedown}
+\item \texttt{mouseup}
+\item \texttt{mouseclick}
+\item \texttt{mousemove} : continously fires
+\item \texttt{resize} : good for smoothly resizing canvases inside divs (best practice).
+	Note: there is no way to listen to a div's resize: listen to the window resize!
+\item \texttt{}
+\end{itemize}
+
+Note the different behaviour of \texttt{mouseenter}, \texttt{mouseover} and
+\texttt{mousemove}.
+
+\subsection{Getting the mouse coordinates relative to an element}
+The event parameter of the function passed to addEventListener contains many properties,
+like \texttt{clientX} and \texttt{clientY}, but these refer to the window; use
+\texttt{var rect = element.getBoundingRect()}, where \texttt{element} is a reference
+to the desired element and then the \texttt{rect.left} and \texttt{rect.top} properties.
+
+\subsection{Resizing a Canvas}
+Changing the size of a canvas using its \texttt{width} and/or \texttt{height} properties
+is not good, since it deletes its content and resets its context. Using \% in the CSS
+\texttt{width} and \texttt{height} properties clearly doesn't change the image resolution,
+giving a blurry effect when the image gets too large.
+Note: if i declare \texttt{<canvas if=mycanvas width=100 height=100>} and then, in the
+CSS:
+\begin{verse}
+\begin{verbatim}
+	#mycanvas {
+		width: 100%;
+	}
+\end{verbatim}
+\end{verse}
+the canvas will always have the same width of the window, also after resizing it,
+\textbf{but the content drawn in the canvas won't change its resolution}, probably
+leading to a blurry image!! So, never use CSS percentage on a canvas width or height!
+
+The best practice for resizing, responsive and well rendered canvases is to use
+a \textbf{resize listener} and a \textbf{parent element}.
+The procedure is:
+\begin{itemize}
+\item embed the canvas into a div
+\item make a CSS rule with \% for the width and/or height properties of the div
+\item add an event listener on \texttt{resize} to the window element
+\item (in the called back function) set the width and height of the canvas element to the size
+	of the \texttt{parentDiv.clientWidth} and \texttt{parentDiv.clientHeight} -
+	note: this also erases the content of the canvas!
+\item redraw stuff into the canvas taking into account the new canvas size.
+\end{itemize}
+
+Note: a common trick to avoid that the content goes out of the actual window when
+it is resized too small is to use the scale function.
+
+
+% -----
+\chapter{Lesson 5 - HTML5 Forms}
+Some years ago, many frameworks provided the GUI elements and the
+input validation APIs to the various types of inputs. In the last
+years, HTML5 has added many elements, in order to take into also
+account mobile devices:
+\begin{itemize}
+\item input validation JS API
+	\begin{itemize}
+	\item CSS subclasses to change the aspect of an input element depending upon
+		its validity
+	\end{itemize}
+\item visual feedback
+\item contextualized keyboards (depending upon the type of the input field in the form)
+\item 13 new \texttt{<input type=...>} fields:
+	\begin{itemize}
+	\item email
+	\item tel
+	\item color
+	\item url
+	\item date
+	\item datetime
+	\item datetime-local
+	\item month
+	\item week
+	\item time
+	\item range
+	\item number
+	\item search
+	\end{itemize}
+\end{itemize}
+Other elements:
+\begin{itemize}
+\item the option to set an input field out of a form;
+\item new elements, such as:
+	\begin{itemize}
+	\item \texttt{<datalist>} for auto-completion;
+	\item \texttt{<output>} for feedback
+	\item others.
+	\end{itemize}
+\end{itemize}
+
+\section{Introduction to HTML5 Forms}
+We'll see examples of some of the different input types.
+Some tips:
+\begin{itemize}
+\item I can \textit{callback} methods using the \texttt{oninput} attribute of
+the input element.
+\item A good practice is to add a \texttt{label} for the input element: to make
+this label appear next to the input element, set the \texttt{for} attribute of
+the label to the same value of the \texttt{id} attribute of its relative input
+element. This is also good for \emph{accessibility}. 
+\end{itemize}
+
+\subsection{\texttt{range}}
+It renders a slider with the round handle that the user can drag from left to right.
+Attributes:
+\begin{itemize}
+\item \texttt{min}
+\item \texttt{max}
+\item \texttt{value} - the default value for the slider.
+\end{itemize}
+
+If i add a \texttt{label} to the \texttt{range}, pressing
+the left/right arrow keys after selecting the label changes the value of its associated input element.
+Another thing that can be set on this set of elements (label + range) is the \texttt{output} field. Set the
+\texttt{id} attribute of the \texttt{output} element in order to be able to refer to it via code using the
+\texttt{getElementById()} method.
+
+To get the value that the user has set using the slider: \\
+\begin{verse}\texttt{size = parseInt(event.target.value);}\end{verse}
+where \texttt{event} is the argument of the callback function (i must
+specify the event parameter also in the value of the \texttt{oninput} attribute
+of the range element!).
+
+To set the output value in the output element: \\ 
+\begin{verse}
+\texttt{document.getElementById("output").innerHTML = size;}
+\end{verse}
+
+\subsection{color}
+Renders a color chooser that opens the OS color chooser. Remember to associate a \texttt{label} using the
+\texttt{for} attribute of the label and also to set a callback method using the \texttt{oninput} attribute
+of the color element, as seen for the range element.
+
+It's good to set the default value for the color (hexadecimal) using its own
+\texttt{value} attribute. Note: the value this time is an integer, so i don't
+need to parse the int from value as i did for the range.
+
+\subsection{Dynamically creating GUI elements}
+We have seen an example where an unordered list is specified in the HTML code and then
+all of the element items are dynamically added via JavaScript code. We use the DOM API
+to accomplish this task.
+
+The DOM method used to create an element is \\ 
+\begin{verse}
+\texttt{document.createElement("element");}
+\end{verse}
+where ``element'' can be a \texttt{label}, a \texttt{li}, an \texttt{input} or other
+HTML5 elements.
+
+Once i have the element, i set its attribute using the \\
+\begin{verse}
+\texttt{element.setAttribute("attribute", "value");}
+\end{verse}
+
+The label has the \texttt{textContent} property to set its text value;
+the input has the \texttt{value} property to set its default value;
+the list item and the list have the \texttt{list.appendChild(listElement)} method
+to append elements to them - note that the content of a list item must
+be appended to it using the previous method on the list item; then the
+list item itself must be appended to the list:
+\begin{verse}
+\begin{verbatim}
+li.appendChild(label);
+li.appendChild(input);
+list.appendChild(li);
+\end{verbatim}
+\end{verse}
+
+\subsection{Forms}
+They have 2 main attributes:
+\begin{itemize}
+\item \texttt{action} the url of the server-side component that will process the data entered
+	(usually a php, python, ruby, Java, etc. file)
+\item \texttt{method} the way data will be sent to the server: can be \texttt{POST} or \texttt{GET}
+\end{itemize}
+Good practice: group elements inside a \texttt{<fieldset></fieldset>}; use a
+\texttt{<legend></legend>} to add a title to the fieldset.
+There's a common technique that is used to align text input fields using CSS:
+\begin{verse}
+\begin{verbatim}
+input {
+	float:right;
+	margin-right:70px;
+	width:150px;
+}
+\end{verbatim}
+\end{verse}
+
+Use the \texttt{border-radius} CSS attribute of the fieldset to make it look nicer.
+
+An input field, with type \texttt{text} can have the \texttt{required} attribute,
+that will make it \textit{invalid} if it's empty.
+I can style this state using the super class inherited by the input elements
+(new feature, introduced in HTML5), like this:
+\begin{verse}
+\begin{verbatim}
+input:invalid {
+	/* style.. */
+}
+\end{verbatim}
+\end{verse}
+This is an example of input-validation system.
+A bubble with an alert will automatically pop up if a required field is left empty. The
+language of the message in the alert is the same as that of the OS.
+
+Other features of input-validation exist for the input with type \texttt{email}: the
+input must look like an e-mail addres.
+
+For the input with type \texttt{number} the attributes \texttt{min, max, step, required}
+can be specified.
+
+The required attribute can also specified for the \texttt{date} type of the input element.
+
+\section{Accessible Forms}
+There are 2 main guidelines to make accessible forums:
+\begin{itemize}
+\item add a \textit{descriptive} \texttt{label} item for each field of the form and use the
+ \texttt{<label>} element to identify each form control;
+\item for larger or complex forms, use the \texttt{<fieldset>} and \texttt{<legend>} elements
+ to \textit{group} and \textit{associate} related form controls.
+\end{itemize}
+
+A very important thing to implement is the \texttt{for} attribute for the label, setting it
+the same value as the id of the related element (i.e. an input element). Using the
+\texttt{for} attribute makes the label clickable. In the case of an input (text)
+element, clicking on its label puts the focus on the input element. 
+This also happens in the case of a textarea.
+In the case of an
+input (checkbox), clicking the label will toggle the selection on the input.
+This also happens for input (radio) and input (checkbox).
+This behaviour
+is very good for visually impaired and people with difficulties in movements.
+
+Labels and inputs can also be nested: this may lead to an easier CSS styling and produce
+better results with screen readers.
+
+WAI-ARIA lets you create associated controls using the \texttt{role} attribute (i.e.
+specify it on a div element).
+
+\section{New Input Types}
+Letting the user choose a color is much easier than before, using the \texttt{color} element.
+A window will pop up with a color chooser. To restrict the basic color icon on the page
+to a selection of few colors, put the color values  as \texttt{option}s inside a \texttt{datalist};
+the datalist's \texttt{id} must have the same value of the color's \texttt{list} attribute.
+Color values must be specified using the hexadecimal CSS notation. As usual, take a look at
+the compatibility of these new elements, before taking their perfect behaviour for granted on
+each browser.
+
+One critic to complex widgets like the one rendered by the color and date elements is that
+they are rendered differently by different browsers/OSs
+and they are little or no customisable.
+One solution to this is using \textit{Web Components}, a new approach to design HTML5 widgets.
+\subsection{\texttt{input type=date}}
+The dates are string in the format yyyy/mm/dd.
+Use these attributes to tweak:
+\begin{itemize}
+\item \texttt{value}: actual value
+\item \texttt{min}
+\item \texttt{max}
+\item \texttt{step}: set this to 7 and only the same day of the week as the one set in value
+will be selectable.
+\end{itemize}
+Use the \texttt{list} attribute to specify dates: the same value of list must be set for
+the id of the \texttt{datalist} element that will contain the specified dates. The dates
+must be the content of \texttt{option} tags.
+
+I can retrieve the date chosen in JS setting the \texttt{oninput} attribute to a function
+(with a parameter for the event) and then use \texttt{this.value} inside of it. Note:
+this value is a string! If i want it to be a date object, i must use
+\texttt{this.valueAsDate} inside the callback function of the \texttt{oninput}
+attribute of the date element.
+
+I can check if the date is in the past or in the future, comparing it to a
+\texttt{new Date()} object, that represents the date of today. Note: i must
+use the \texttt{this.valueAsDate} to get the date as a valid date object.
+This value can be obtained inside the callback function of the
+\texttt{oninput} attribute of the date element.
+Note that the \texttt{this} keyword inside a callback represents the object
+that triggered the callback.
+
+The different types of input elements automatically render different keyboards.
+The CSS classes \texttt{input:valid} and \texttt{input:invalid} are automatically
+inherited when the user starts interacting with the input element.
+
+The \texttt{placeholder} (default, greyed out value) and \texttt{pattern}
+(specify which pattern - regex - the users' input should satisfy) attributes of
+input elements may be useful.
+
+The \texttt{input type=number} can store integers or floats. Use text with regexp
+for zip codes (important for validation!). Some useful attributes are:
+\texttt{value, min, step, max}. It gets automatic CSS validation, inheriting
+the \texttt{input:valid|invalid} class.
+NOTE: step defaults to 1, so, in order to accept floating point values, it
+must be set to \texttt{any} or to a decimal value. This is not needed for integer
+values.
+
+The \texttt{input type=range} renders a slider. The same useful attributes seen
+for the number type are valid for this element too. Furthermore ticks can be
+added using a datalist element with the values specified in option elements. The
+datalist's id value must be equal to the input's list value.
+Sliders can be styled using CSS.
+
+Remember to use the \texttt{value} property to get values from input elements!
+
+\section{New Form Attributes}
+They are\footnote{for the boolean attribute, writing the name of the attribute means
+	that you want that feature}:
+\begin{itemize}
+\item \texttt{form} : this element is useful to make element that are outside
+	a form (i.e. external to a fieldset) part of the form too;
+\item \texttt{readonly} : 
+\item \texttt{autocomplete}
+\item \texttt{autofocus} : puts the focus to the input element
+	(if not present, it automatically defaults to the first)
+\item \texttt{list} :  works together with datalist; datalist provide a list of items
+	for the list using \texttt{option} elements. Note: the \texttt{list} attribute
+	of the \texttt{item} element, and the value of the \texttt{id} attribute of the
+	\texttt{datalist} element must match!
+\item \texttt{pattern} : must be a valid JS regex (see
+\href{http://www.html5pattern.com}{html5pattern}
+for a list of ready-to-use useful patterns).
+\item \texttt{required} : makes empty fields invalid
+\item \texttt{placeholder}
+\item \texttt{multiple}
+\item \texttt{list}
+\item \texttt{min}
+\item \texttt{max}
+\item \texttt{step}
+\item \texttt{formaction}
+\item \texttt{formenctype}
+\item \texttt{formmethod}
+\item \texttt{formtarget}
+\item \texttt{formnovalidate}
+\end{itemize}
+
+\section{New Elements Related To Forms}
+These elements are:
+\begin{itemize}
+\item \texttt{datalist} : useful for linking a list of choices to an input element
+\item \texttt{output} : example:
+	\begin{verse}
+	\begin{verbatim}
+	<form oninput="o.value=a.value*b.value">
+     <input type="number" name="a" id="a" value="2"> x
+     <input type="number" name="b" id="b" value="3"> =
+     <output for="a b" name="o">6</output>
+	</form>
+	\end{verbatim}
+	\end{verse}
+	Note that the for label of the output must contained a space separated list
+	with the value of the ids that it will receive its data from; also, the value
+	of the name of the output can be used in the \texttt{oninput} attribute to
+	put values in it. Use the \texttt{valueAsNumber} attribute when dealing with
+	range and number, to be sure to get a number, instead of a string (value).
+\item \texttt{meter} : represents graphically numeric values. Do not use it to
+	show the progress of an activity. Example:
+	\begin{verse}
+	\begin{verbatim}
+	<p>Grades: <meter id="meter2" value="75" min="0" max="100" low="20" high="80"></meter>
+	<input min="0" max="100" value="75" id="meter2range"
+       oninput="effect('meter2', 'meter2range')" type="range">
+ 	<output id="meter2val" for="meter2range"></output></p>
+ 	<script>
+ 	function effect(meter, meterrange) {
+     var currVal = document.getElementById(meterrange).value;
+     document.getElementById(meter).value = currVal;
+     document.getElementById(meter+ "val").innerHTML = currVal;
+ 	}
+ 	</script>
+	\end{verbatim}
+	\end{verse}
+\item \texttt{progress} : define it using its \texttt{id, value, min, max}
+	attributes; set its value using its \texttt{value} attribute.
+\item \texttt{keygen}
+\end{itemize}
+
+\section{Form Validation API}
+The built-in validation system that comes with HTML5 automatically add a pseudo class
+to every input fields and forms. Valid/invalid input in fields make that field
+automatically inherit the \texttt{input:valid/input:invalid} CSS pseudo classes.
+Other pseudo classes are \texttt{input:optional, input:required}. NOTE: always
+providing CSS styling for these subclasses is a good practice. Another good practice
+is using the \texttt{title} attribute to show messages for suggestions
+in case of invalid input.
+
+The validation can also be done through the JS Validity API: there is a method, for
+example, that \texttt{input type=password} element can respond to: it is
+\texttt{setCustomValidity('msg')}.
+If msg is empty, it means no errors occurred; if it is not null, it means that
+the input is invalid and the string is used as error message.
+Each input element has a \texttt{validity} JS property that holds a validity
+state object: this is used to better understand the reason of invalidity.
+This reason can be one of:
+\begin{itemize}
+\item \texttt{valueMissing}
+\item \texttt{typeMismatch}
+\item \texttt{patternMismatch}
+\item \texttt{tooLong}
+\item \texttt{rangeUnderflow}
+\item \texttt{rangeOverflow}
+\item \texttt{stepMismatch}
+\item \texttt{valid}
+\item \texttt{customError}
+\end{itemize}
+Another way to get informations about the invalidity is using the
+CSS \texttt{validationMessage} property of input fields.
+
+
+% -----
+\chapter{Lesson 6 - HTML5 Basic APIs}
+\section{Introduction to HTML5 Apis}
+We will take a look at:
+\begin{itemize}
+\item The HTML5 Cache API for making websites and web application work offline.
+\item The ``Web Storage API'' for storing pairs of key/values client-side. Useful
+	for making web sites able to save/restore their state or for writing serverless
+	applications.
+\item The File API, that makes web applications able to work with local files. E.g.
+	listen to the music stored on your device, view pictures and document also stored
+	on your device.
+\item The Geolocation API to get the longitude, latitude, altitude, speed, heading, etc.
+	and getting able, for example, to auto-fill addresses in forms based on the current
+	location!
+\end{itemize}
+\section{HTML5 Cache}
+Caching webpages and webapps leads to the possibility of working offline and also to
+faster loading of the pages: this is especially important for frequently visited
+websites.
+
+The Developer specify which resources should be cached in a manifest. What should
+and what should not be cached. Use the \texttt{manifest} attribute of the
+\texttt{html} tag and set it to
+a value (string) that ends with \texttt{.appcache}: this will tell the browser to
+cache that page, so i must do this for all the pages that i want to cache.
+Inside the \texttt{.appcache} file i must provide a list of all the files that
+need to be cached. Example, mycache.appcache :
+\begin{verse}
+\begin{verbatim}
+CACHE MANIFEST
+clock.html
+clock.js
+clock.css
+jpeg files, documents, etc.
+\end{verbatim}
+\end{verse}
+External resources must be cache too, like jQuery, for example, so that the website
+will continue to work properly offline. Use a tool, like
+\href{http://westciv.com/tools/manifestR/}{ManifestR}.
+\subsection{How to exclude certain files}
+Here's how:
+\begin{itemize}
+\item remove their name from the list of cached file;
+\item specify what not to cache; the \texttt{*} is used to not cache the files not listed in
+the \texttt{CACHE} section:
+	\begin{verse}
+	\texttt{NETWORK:} \\ \texttt{*}
+	\end{verse}
+\item declare the fallback to use when the user chooses
+services that are not available when offline:
+	\begin{verse}
+	\texttt{FALLBACK:} \\ \texttt{/ offline.html}
+	\end{verse}
+\end{itemize}
+
+\begin{itemize}
+\item The page that declares the manifest will automatically be cached, but adding it anyway is
+good practice. Include the manifest
+attribute in any page, if the web app must also work offline.
+\item It's better to use relative paths for the manifest attribute!
+\item The manifest file must be served with the correct MIME type: the HTTP server that
+serves the files of the website must be configure so that .appcache files are served with
+the MIME type: \texttt{text/cache-manifest}. With the Apache server, the \texttt{HTTP.conf} file
+must contain this line:
+\begin{verse}
+\texttt{AddType text/cache-manifest.appcache}
+\end{verse}
+\item If a file is in cache, that will be used, even if online! See later how to update the cache.
+\item No partial update possible: if a file cannot be retrieved and cached, zero files will be
+updated in the cache.
+\item Comments can be added inside manifest files using \texttt{\#} .
+\item Using a manifest file validator is a good practice!
+\item Partial URLs can be used in the NETWORK section (but not in the CACHE section, where each
+file must be explicitly declared with its full path), like:
+	\begin{verse}
+	\texttt{/images}
+	\end{verse}
+	that means ``do not cache the files in the /image directory''.
+\item The lines:
+	\begin{verse}
+	\texttt{FALLBACK} \\ \texttt{/ offline.html}
+	\end{verse}
+	tell the browser what to load when the user is trying to access a not cached resource:
+	the \texttt{/} means ``for all the resources that are not accessible'' and the rest means
+	``open offline.html''.
+\item Partial URLs are available in the FALLBACK section too:
+	\begin{verse}
+	\texttt{FALLBACK} \\
+	\texttt{/images/ /images/missing.jpg}
+	\end{verse}
+	meaning that all the files in the \texttt{/images/} directory - if not available in the cache -
+	should be replaced by the \texttt{missing.jpg}
+	image, from the same directory, when offline.
+\end{itemize}
+
+If my code imports other resources, using CSS \texttt{@import} or images, technologies (i.e. jQuery),
+CSS/JS addons or other, it could be hard
+to specify all of those resources in the manifest file; this is why some tools exist just for that
+purpose. There's a \textit{same origin policy} about website accessible only through \texttt{https} that says
+that only resources from the same domain should be cached, but this is usually not contemplated,
+since it is too restrictive.
+
+\subsection{Updating the cache}
+Caution! \emph{If a website is in cache, the browser will show that version, instead of the online version!}
+Best practice: after modifying the website, developers should add a comment with the modification date in the
+manifest! The browser looks at the manifest's modification date to understand if they must update the cache!
+If the date is more recent than the date of the cached manifest, the browser will update all of the files
+in cache the have a less recent date than the ones on the server.
+
+Developers clean the cache manually: this will also update the cache, clearly.
+
+The DOM Api has a property called \texttt{navigator.onLine} that is true if the computer is connected to
+the internet. NOTE: This doesn't guarantee that the browser will be able to retrieve any website, since
+it doesn't refer to DNS server problems or remote server (the one that hosts the website/service) i am
+currently requesting) problems.
+
+\section{The Web Storage API}
+It features 2 related mechanism, similar to HTTP session cookies, to store structured data on the client side.
+It provides 2 interfaces, sessionStorage and localStorage: the first holds the data until it is deleted, the
+second does that only until the tab/browser is closed. This specification defines an API for persistent data
+storage of key-value pair data \textit{in web clients}.
+
+Both of them work as a simple key-value store, \textit{one per domain}. The key-value pairs are strings.
+There is only 1 store per domain. The content of the store is global. The data is located in a store
+attached to the origin of the page.
+
+Cookies are also a popular way to store key-value pairs of data, but they are limited in size and they
+generate HTTP traffic for each additional request. Objects managed by Web Storage are no longer carried
+on the network and HTTP and are easily accessible (read, change and delete) from JavaScript, using the
+Web Storage API.
+
+Values can be set this way:
+\begin{verse}
+\begin{verbatim}
+localStorage.key = "value";
+\end{verbatim}
+\end{verse}
+The same applies to \texttt{sessionStorage} data.
+
+For security reasons Web Storage only works through \texttt{http | https} and not with \texttt{file}.
+
+An example of usage of this technology is restoring data in a form that was previously been input,
+after a reload of the page - very useful feature! E.g. add
+\texttt{onload="localStorage.firstName=this.value;"} inside each input text element (similar for other
+kinds of input)! Then, retrieve the data using,
+\begin{verse}
+\begin{verbatim}
+window.onload = restoreFormContent();
+function restoreFormContent() {
+	if (localStorage.firstName !== "undefined") {
+		document.getElementById("firstName").value = localStorage.value;
+		}
+}
+\end{verbatim}
+\end{verse}
+
+Some methods:
+\begin{verbatim}
+localStorage.setItem(key, value);
+localStorage.getItem(key);
+localStorage.removeItem(key);
+localStorage.clear(); // remove all keys
+\end{verbatim}
+Using the accessors i can use more complex values for the keys (including spaces): I can't do this
+using a property name!
+\subsection{Iterating a localStorage}
+Example:
+\begin{verse}
+\begin{verbatim}
+for (var i=0; i<localStorage.length; i++) {
+	var k = localStorage.key(i);
+	console.log(localStorage[k]);
+}
+\end{verbatim}
+\end{verse}
+Notice the \texttt{length} property and the \texttt{key} method.
+
+Instead of using cookies, use \texttt{sessionStorage}: it's more convienent,
+it can store more data and also it doesn't leak data through different tabs
+(the scoping is only inside the tab)!!
+
+An alternative to basic key-value objects are JSON objects.
+Methods: \texttt{stringify}, to create one from a string; \texttt{parse},
+to get a key-value object from a JSON object.
+
+\section{The File API}
+Designed to work with files on server-side in JavaScript. See
+\texttt{FilesAPI/files.html} inside the HTML5 coding directory for an example
+that uses this api to load images on the HTML5 document from images on the
+hard disk. Notes about this code:
+\begin{itemize}
+\item The files are input via a \texttt{input type="file"};
+this input element has the \texttt{multiple} attribute, that lets the user choose
+more than one file from the hard drive (a window will appear after clicking the
+button). Selected files are referenced inside this input element with
+\texttt{this.files}.
+\item The different files are accessed from the array of files that has been
+passed as input to the \texttt{readImagesAndPreview} function set as value
+of the \texttt{onchange} attribute of \texttt{input type=file}.
+\item An empty div is used in order to get the container for the pictures; it gets
+populated via code using the \texttt{appendChild(img)} method on the reference to
+the div (obtained using \texttt{document.getElementById("divName")}).
+\item The img element is created using the \texttt{document.createElement("img")}
+method.
+\item The src of the img is set with \texttt{img.src = e.target.result;}, where
+\texttt{e} is the argument to the \texttt{reader.onload} function.
+\item \texttt{reader} is the file reader obtained with the constructor
+\texttt{reader = new FileReader();}.
+\item Each file is rendered as image using the reader:
+\texttt{reader.readAsDataURL(file)}. After this method finishes, the \texttt{onload}
+of the reader is automatically called, the data are read and the image is rendered
+inside the div (appended to it).
+\end{itemize}
+
+\subsection{Metadata of files}
+The files selected using \texttt{input type=file id=finput} can be accessed through
+an array:
+\begin{verse}
+\begin{verbatim}
+var file0 = document.getElementById("finput").files[0];
+\end{verbatim}
+\end{verse}
+This file element has lots of meta-data properties:
+\texttt{name, type, size, lastModifiedDate}, etc.
+
+Using the \texttt{accept} attribute of the \texttt{input type=file} element,
+i can let the user select only images: \texttt{accept="image/*"}.
+
+\subsection{New interfaces - File API}
+These are the new interfaces introduced by this API in HTML5:
+\begin{itemize}
+\item \texttt{FileList} : the \texttt{files} property is a \texttt{FileList}.
+\item \texttt{File} : one element of the \texttt{files} array is a \texttt{File}.
+They inherit their properties from the \texttt{Blob} class, and add 2 more:
+\texttt{name} and \texttt{lastModifiedDate}. Usually I will work with File objects,
+instead of Blob ones.
+\item \texttt{Blob} : chunk of raw data. A structure that represents \textit{binary}
+data
+available as read-only. These objects have 2 properties: \texttt{size}, that
+store the size in byte and \texttt{type} that stores the MIME type of the data.
+There is also a method called \texttt{slice()} that is used to slice files.
+\item \texttt{FileReader} : to read file content
+\end{itemize}
+
+\subsection{How to read the content of a File}
+Steps:
+\begin{itemize}
+\item create a \texttt{FileReader};
+\item get the File (\texttt{<input type=file id=file ...} \\
+\texttt{... onchange="readFileContent(this.files[0]);">}) object;
+\item use \texttt{readAsText | readAsArrayBuffer | readAsDataURL} ;
+\item set the \texttt{onload} callback to operate on the data just obtained
+used one of the previous methods.
+\end{itemize}
+Example:
+\begin{verse}
+\begin{verbatim}
+var reader = new FileReader();
+
+function readFileContent(f) {
+// this will be called for second, after the
+// readAsText has finished loading the File
+	reader.onload = function(e) {
+		var content = e.target.result;
+		// do what you need with the content
+		console.log("File " + f.name + " content: " + content);
+	};
+	// this will be called first
+	// start reading the file f asynchronously;
+	// only calls the callback when the
+	// content is completely loaded (i.e. the
+	// file has been read completely)
+	reader.readAsText(f);
+}
+\end{verbatim}
+\end{verse}
+Notice that the operation of reading the File object, with one of the 3 possible methods, is
+asynchronous, since it may take some time; this is why it gets executed in background.
+Also notice that the File object \texttt{f} has been passed by the function specified
+in the \texttt{onchange} attribute of the \texttt{<input type=file..} element!
+Of course, if i want the entire array of files (if i specify the \texttt{multiple}
+attribute for the input element, then i will drop the \texttt{[0]} after \texttt{this.files}
+in the \texttt{onchange} attribute.
+
+\subsection{readAsArrayBuffer()}
+This is usually used to load audio to play later using the WebAudio API or to load texture that
+will be used with WebGL for 3D animations.
+Note: the WebAudio API works only with local files. I can create an MP3 player web app without
+the need of a server.
+
+\subsection{readAsDataURL()}
+A \textit{dataURL} is a URL that contains both type and content at the same time.
+It's becoming quite popular, especially for mobile devices, since it reduces the internet
+traffic and increases the loading speed. It's getting popular for inlining images: it
+can be used as argument to the \texttt{src} attribute of \texttt{img} elements and also
+as url. There are many online tools that generate this kind of data. Any type of files
+can be encoded as dataURL, but it is usually used with media files, like images, audio,
+video.
+Remember: this method passes a variable, e.g. \texttt{e} as argument to the function
+called back on the \texttt{reader.onload}, where the reader is the FileReader.
+
+\section{The Geolocation API}
+A simple example:
+\begin{verse}
+\begin{verbatim}
+if (navigator.geolocation) {
+	navigator.geolocation.getCurrentPosition(showPosition, error);
+} else {
+	// inform the user that her browser does not support geolocation
+}
+
+function showPosition(position) {
+	console.log("Position: latitude " + position.coords.latitude +
+	" longitude: " + position.coords.longitude);
+}
+
+function error(e) {
+	console.log("Error: ...");
+}
+\end{verbatim}
+\end{verse}
+Note: when a current position is available, the callback function will be called asynchronously
+and the position parameter of this callback function will be the current position.
+\subsubsection{The error parameter of \texttt{getCurrentPosition()}}
+This parameter has a property called \texttt{code} that can have one of the following values:
+\begin{itemize}
+\item \texttt{error.TIMEOUT}
+\item \texttt{error.PERMISSION\_DENIED}
+\item \texttt{error.POSITION\_UNAVAILABLE}
+\item \texttt{error.UNKNOWN\_ERROR}
+\end{itemize}
+
+\subsection{Properties of the coords object}
+Note: not all browsers support this: a null object is returned, in that case.
+\begin{itemize}
+\item \texttt{latitude}
+\item \texttt{longitude}
+\item \texttt{altitude}
+\item \texttt{accuracy} (meters)
+\item \texttt{altitudeAccuracy}
+\item \texttt{heading} : orientation, relative to North
+\item \texttt{speed}
+\end{itemize}
+
+\subsection{The \texttt{watchPosition()} method}
+It calls the callback each time the position changes (\texttt{getCurrentPosition()}
+only does that once). The parameters are the same as for the previous method.
+It returns an ID, so I can stop the current tracking using
+\texttt{navigator.geolocation.clearWatch(id)}.
+
+A third parameter can be added to the last 2 methods introduced, that will hold
+one or all of these options:
+\begin{itemize}
+\item \texttt{enableHighAccuracy} : more or less it means ``use the GPS!'' (true|false)
+\item \texttt{maximumAge} : store data in cache, allowing for battery/bandwidth saving (millis)
+\item \texttt{timeout} : time before returning an error (millis)
+\end{itemize}
+These values must specified inside a structure, like this:
+\begin{verse}
+\begin{verbatim}
+{enableHighAccuracy:true, maximumAge:10000, timeout:1000}
+\end{verbatim}
+\end{verse}
+See an example at:
+\texttt{/home/pvag/Coding/HTML5\_edX/someHTML/...} \\
+\texttt{...Add variable as string using innerhtml/imgsrc\_string\_test.html}
+
+
+
+
+% -----
+\chapter{Tags}
+    \section{<time>}
+    e.g.
+    \begin{verbatim} <p>Appointment:<time datetime="2015-05-20">Monday 20/05/2015</time></p> \end{verbatim}
+    The datetime parameter is used to specify a date or time; for a period of time, use datetime="P4D"
+    (period of time of 4 days).
+    \section{<mark>}
+    It can be used for:
+    \begin{itemize}
+        \item Display search results with searching words highlighted
+        \item Highlight important parts of a text, like ``quoting parts''
+        \item Replace <strong> and <em> when suitable.
+    \end{itemize}
+
+    \section{<figure>}
+    It allows inner <figcaption>. See
+    \begin{verse}
+~/Coding/HTML5\_edX/someHTML/Audio/audio\_transitions.html and audio\_transitions.css
+	\end{verse}
+
+	\section{<code>}
+	Used to type code: fixed size font.
+
+% --- T R I C K S ---
+\chapter{Tricks}
+\begin{itemize}
+\item \begin{verbatim}
+	  <body onload="init();">
+	  \end{verbatim}	
+	  calls the init() method
+\item \texttt{window.onload = function() \{ // code \}}
+\end{itemize}
+
+% --- T I P S ---
+\chapter{Tips}
+\begin{itemize}
+\item When including videos, try to provide them in more than one codec, if possible. H264 is the most compatible,
+	but webm allows much playing the video after a much shorter buffering time.
+\end{itemize}
+
+% --- M I C R O D A T A ---
+\chapter{Microdata}
+    Contain content that is not visible by the user; it's just for the engines, to better understand the content
+    of the pages, the topic they talk about. The main interest is Search Engine Optimization.
+    Examples: events, a person's profile, the description of an organization, the details of a recipe, a prduct
+    description, a geographical location, etc. It's HTML5's way to embed semantics into html documents.
+    There are 3 attributes to consider:
+    \begin{itemize}
+        \item itemscope - starts a microdata section
+        \item itemtype  - defines the schema
+        \item itemprop  - defines the key name (aka property); then there's its value
+    \end{itemize}
+    Define a container element (e.g. a section) and insert the itemscope attribute inside it.
+    \begin{verbatim}
+        <section itemscope itemtype="http://schema.org/Person">...</person>
+    \end{verbatim}
+    Now i have defined a global wrapper object, the Person: i can add elements inside it, to define the first name,
+    last name, etc. HTML5 proposes semantic elements to represent sections, articles, header, etc., but it doesn't
+    propose any specific element nor attribute for the elements of an Address, or a Person, and so on. I can use
+    the specifications provided at the schema.org website, thanks to the itemtype attribute. I could also define
+    my personal vocabulary to define the elements of an object like a person. Microdata works with properties defined
+    as key/value pairs. This vocabulary is called a \emph{schema}. I can also have an object as a value to a particular
+    key. Inheritance is possible among schemas. See an example of microdata usage
+    at ~/home/pvag/Coding/HTML5\_edX/Microdata/microdata.html . It is possible to define the value of a property
+    more than once. It is possible to nest schemas: the one in the inner section will lead. It is also possible to
+    define more than one property at the same time with the same value(s). Note that for particular html elements
+    the value will be the value of another attirbute, as for example:
+    \begin{verbatim}
+        <img itemprop="image" src="site.com/im.png"
+         alt="cool image description">
+    \end{verbatim}
+    the value of the microdata image property will be the value of the src attribute.
+    
+    Many tools exist to automatically generate microdata content.
+
+% -----
+\chapter{New Features}
+
+% -----
+\chapter{Misc}
+    \section{Jargon}
+    \begin{itemize}
+        \item \textbf{Polyfill}: is a new feature, not officially released yet, but that is implemented in JS.
+        \item \textbf{DOM}: Document Object Model.
+        \item User Agent: the browser
+    \end{itemize}
+    \section{HTTP Request}
+    In its header put
+    \begin{itemize}
+        \item Content-type:image/jpg - to open the resource in a new tab
+        \item Content-Disposition: attachment; filename="myImage.png"; - to download the image, renaming it myImage.png
+    \end{itemize}
+    With the new <a> tag there's a new simple way to download the resource specified in href: use its download attribute
+    set to a file name (the name i want the downloaded file to have after the download, even if different from its original name)..
+    \begin{verbatim}<img src="theImage.png" download="imageNameAfterDownloading.png">\end{verbatim}
+    For security reasons, images should be located on the same domain of the HTML page containing the link.
+    \section{Do Not Translate!}
+    translate="no" (yes for translating)
+    Useful for pages displaying stuff that translators, like Google Translator, shouldn't translate.
+    Another state is possible: "inherit state".
+    Children inherit this behaviour; the reverse is true.
+    \section{Callback vs. Fallback}
+    A callback is triggered by some element when something happens on it, i.e. it is clicked or selected (\texttt{oninput});
+    a fallback is started as an alternative when something is not found, i.e. polyfills are used if the
+    browser doesn't provide native support to a specific element for which the browser does.
+
+\part{Beyond HTML}
+
+% --- J S ---
+\chapter{JavaScript}
+JavaScript is an asynchronous language: it sends multiple requests and to perform different operations at the same time,
+in parallel. This means that i should pay attention when such a request is made, since its result may not be ready
+whenever i want to use it! That's why a good practice is using callback functions, tipically on the onload property.
+
+\section{Methods}
+\begin{itemize}
+	\item \texttt{querySelector}
+	Example:
+	\begin{verbatim}
+	document.querySelector(``#id_of_element'');
+	\end{verbatim}
+	Note: the selector-syntax (\#) !
+	This method lets me get elements from the DOM. Note: \texttt{\#id\_of\_element}
+	could also be \texttt{element\_name\#id\_of\_element}, where
+	\texttt{element\_name} can be, for example, div.
+	
+	If theVideo is a video element:
+	\begin{verbatim}
+	theVideo.addEventListener(``ended'', funcToCall, false);
+	\end{verbatim}
+	This calls back the function funcToCall when the video in theVideo object ends.
+	
+	\item \texttt{getElementById ; getElementsByTagName}
+	Example:
+	\begin{verbatim}
+	document.getElementById(``theId'');
+	document.getElementsByTagName(``theTag'')[n];
+	\end{verbatim}
+	Notice: the id is the value of the id attribute of the element; the tag is the
+	name of an element, like \texttt{video | section | body}.
+	Note: usually, there are many elements with a specific tag name:
+	they are returned into an array. This is the reason behind the method name:
+	it's \texttt{getElement}\underline{\textbf{s}}\texttt{ByTagName()}.
+	
+	\item \texttt{innerHTML} lets me introduce content inside an HTML element.
+	Example:
+	\begin{verbatim}
+	var theP = document.getElementsByTagName(``p'')[0];
+	theP.innerHTML = ``<h1>Cool p</h1>'';
+	\end{verbatim}
+	
+	\item \texttt{addEventListener}
+	Applied for example to a div element containing many buttons, lets me
+	execute some code depending upon which button was clicked. 	Example:	
+	\begin{verbatim}
+	controls.addEventListener(``click'', functionToCall());
+	\end{verbatim}
+	
+	\item \texttt{setTimeout}
+	Example:
+	\begin{verbatim}
+	setTimeOut(function, timeoutmillis);
+	\end{verbatim}
+	
+	\item \texttt{onClick}
+	Is the method used in JS to set the callback function to a button when clicked.		
+	
+	\item \texttt{setInterval(method, millis)} : often used inside init() to trigger methods at given time
+	\item \texttt{console.time(nameOfTimer)}
+	\item \texttt{console.endTime(nameOfTimer)} : prints the string contained in nameOfTimer and the elapsed time in ms.
+	
+	\item \texttt{output.insertBefore(span, null)} : a method of an output element; e.g. insert
+	an image in the span and then the span in the output element. The output element has children
+	spans inside of it.
+
+\end{itemize}
+
+\section{JS Misc}
+	\begin{itemize}
+	\item JS code in <script> gets executed when the page loads.
+	\item access the attributes of an element via the variable that
+		refers to it - e.g.
+		
+		\begin{verbatim}
+		var vid = document.getElementById("idOfThevideo");
+		vid.width = 100;
+		vid.style.left = 0;
+		\end{verbatim}
+	\end{itemize}
+	
+	If i pass \texttt{this} to a function call (e.g. \texttt{onclick}) in a tag, the \texttt{this}
+	keyword represents the tag element. Inside the JS code i can refer to it, for example to change
+	it's html value or other attribute.
+	
+	\texttt{Math.PI} renders $ \pi $.
+
+% --- C S S ---
+\chapter{CSS}
+\section{How to reference elements, ids, classes - selectors}
+	\begin{itemize}
+	\item element : element\_name { ... }
+	\item id      : \#id\_name { ... }
+	\item class   : .class { ... } - can also be element.class { ... }
+	\item universal : * { ... } - all the elements of an HTML document
+	\end{itemize}
+	It is possible to group together different selectors and set their
+	properties to the same values:
+	\begin{verbatim}
+	h1, h2, h3 {background : #aaaaaa;}
+	\end{verbatim}
+	More than one class can be specified for an element:
+	\begin{verbatim}
+	<p class="class1 class2 class3" id="p1">...</p>
+	<p class="class1 class3" id="p2">...</p>
+	\end{verbatim}
+	The CSS code
+	\begin{verbatim}
+	p.class1.class2 {color : white;} ( 1 )
+	\end{verbatim}
+	Will only apply to the p with id p1, since all the listed classes
+	must be present in the element, for the CSS style specified by ( 1 )
+	to be applied.
+
+\end{document}
