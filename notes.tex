@@ -1,11 +1,10 @@
 \documentclass[a4paper,11pt]{book}
 
 \usepackage[LGR,T1]{fontenc} % greek letters
-\usepackage[utf8]{inputenc} % accentate in Linux
-%\usepackage[italian]{babel}
+\usepackage[utf8]{inputenc} % accents in Linux
 \usepackage[english]{babel}
-\usepackage{bm} % per le lettere greche in grassetto - poi usare \bm{\lettera}
-\usepackage{titling} % per la pagina con titoli, sottotili, ecc.
+\usepackage{bm} % greek letters; usage: \bm{letter}
+\usepackage{titling} % page with title, subtitles, etc.
 \newcommand{\subtitle}[1]{%
   \posttitle{%
       \par\end{center}
@@ -1605,9 +1604,7 @@ These values must specified inside a structure, like this:
 \end{verbatim}
 \end{verse}
 See an example at:
-\texttt{/home/pvag/Coding/HTML5\_edX/someHTML/...} \\
-\texttt{...Add variable as string using innerhtml/imgsrc\_string\_test.html}
-
+\href{http://pdata.altervista.org/HTML5/innerHTML/position.html}{this link}.
 
 
 
@@ -1675,7 +1672,7 @@ See an example at:
     my personal vocabulary to define the elements of an object like a person. Microdata works with properties defined
     as key/value pairs. This vocabulary is called a \emph{schema}. I can also have an object as a value to a particular
     key. Inheritance is possible among schemas. See an example of microdata usage
-    at ~/home/pvag/Coding/HTML5\_edX/Microdata/microdata.html . It is possible to define the value of a property
+    \href{http://pdata.altervista.org/HTML5/microdata/microdata.html}{here} . It is possible to define the value of a property
     more than once. It is possible to nest schemas: the one in the inner section will lead. It is also possible to
     define more than one property at the same time with the same value(s). Note that for particular html elements
     the value will be the value of another attirbute, as for example:
