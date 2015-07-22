@@ -22,7 +22,23 @@ instructor Michel Buffa, the Course Staff, W3C and edX}}
 \begin{document}
 
 \maketitle
-\tableofcontents
+\hypertarget{toc}{} \tableofcontents
+
+\chapter*{Preface}
+These are the notes I took during the ``Learn HTML5 from W3C'' course,
+on \href{http://www.edx.org}{edX}. No affiliation with the course instructor,
+W3C, nor edX exist: these are just a student's notes.
+I hope they can be useful and shared around with anybody who may need them.
+
+Be aware that this document is hyper-linked, from the items in the
+\hyperlink{toc}{\textbf{Contents}} section,
+to link to web pages throughout all the text.
+
+The source \LaTeX code for this document is online on my
+\href{https://github.com/Pvag/HTML5_notes}{repo on GitHub}:
+please, contribute and make it a great document about HTML5, moving from
+simple student's notes, to a very good reference document! I'll enjoy
+accepting your \textit{pull requests}.
 
 \part{HTML}
 
@@ -293,8 +309,9 @@ instructor Michel Buffa, the Course Staff, W3C and edX}}
         formats. The <video> is an member of the DOM, so CSS styling and transformations can be applied, as well
         as manipulation using the DOM API. NOTE: youtube, Vimeo, DailyMotion and other websites offering videos
         and commercials on them, are not embeddable in video elements; use and iframe instead. The iframe will
-        embed and rendere the HTML5 video, together with the advertising that come along with it. See
-        \~/Coding/HTML5\_edX/someHTML/Video/videoIframe.html .
+        embed and rendere the HTML5 video, together with the advertising that come along with it.
+        Click \href{http://pdata.altervista.org/HTML5/video/iframe/videoIframe.html}{here}
+        for a web page with an iframe video.
 
         Beware the \emph{Codecs}: each browser has its favourite coded: as of 2015, the most supported is \textbf{H264/mp4}.
         Encode your videos in the most supported formats!
@@ -324,10 +341,8 @@ instructor Michel Buffa, the Course Staff, W3C and edX}}
             API that supports manipulation of sound sample, music synthesis and sound generation. It also has a set of
             predefined sound processing modules (reverb, delay, etc.).
         \end{itemize}
-        See an example at
-        \begin{verse}
-        ~/Coding/HTML5\_edX/someHTML/Audio/audio.html
-        \end{verse}
+        See an example on
+        \href{http://pdata.altervista.org/HTML5/audio/audio.html}{this page}.
 
         \subsection{Styling <video> and <audio> with CSS3}
         Transitions, Animations and Transforms can be added, since video and audio are full-fledged html elements.
@@ -474,7 +489,8 @@ instructor Michel Buffa, the Course Staff, W3C and edX}}
 	and then use it inside the usual method:
 	\begin{verse}
 	\begin{verbatim}
-	navigator.getUserMedia(vgaConstraints, onSuccess, onError);
+	navigator.getUserMedia(vgaConstraints,
+	onSuccess, onError);
 	\end{verbatim}
 	\end{verse}
 	
@@ -526,7 +542,8 @@ instructor Michel Buffa, the Course Staff, W3C and edX}}
 	\item \texttt{ctx.closePath()} : line from last point to first point of the path.
 	\item \texttt{ctx.drawLine(x1, y1, x2, y2, color, width)} : this works in immediate drawing mode (useful when i need
 			to draw just a line).
-	\item \texttt{ctx.arc(xcenter, ycenter, radius, fromTheta1, toTheta2, drawComplementary)} : the angles are positive
+	\item \texttt{ctx.arc(xcenter, ycenter, radius, fromTheta1, \\
+	toTheta2, drawComplementary)} : the angles are positive
 			in the clockwise rotation; Math.PI/2 is bottom vertical.
 	\item \texttt{ctx.arcTo(x1, y1, x2, y2, radius)} : the first tangent passes through the actual point and (x1, y1);
 			the second tangent passes through (x1, y1) and (x2, y2); the radius is the last constraint to define the arc.
@@ -602,8 +619,10 @@ instructor Michel Buffa, the Course Staff, W3C and edX}}
 	E.g.
 	\begin{verbatim}
 	var im = new Image();
-	im.src = "imageAddress" // this loads the image in the background; when it's finished, the function specified
-							// in im.onload is called
+	// this loads the image in the background;
+	// when it's finished, the function specified
+	// in im.onload is called
+	im.src = "imageAddress"
 	im.onload = function () {
 		var cnv = getElementById("canvasId");
 		var ctx = cnv.getContext("2d");
@@ -685,23 +704,23 @@ image has been completely loaded - use an array to store the images, for example
 
 \section{Shadows}
 There are 4 properties to draw shadows:
-\begin{verbatim}
+\begin{itemize}
 \item \texttt{shadowColor}
 \item \texttt{shadowBlur}
 \item \texttt{shadowOffsetX}
 \item \texttt{shadowOffsetY}
-\end{verbatim}
+\end{itemize}
 Note: unwanted shadows can be removed saving the context, then setting the shadow parameters and then restoring the context;
 what will be drawn next won't have shadows, for example, but many other different combinations are possible.
 
 \section{Styling Lines (context properties)}
-\begin{verbatim}
+\begin{itemize}
 \item \texttt{lineWidth}
 \item \texttt{lineCap = "butt" | "square" | "round"}
 \item \texttt{lineJoin = "miter" | "bevel" | "round"}
-\item \texttt{miterLimit} : useful when \texttt{lineJoin} is \texttt{miter}: renders the line as if \texttt{lineJoin}
-			was set to \texttt{bevel}.
-\end{verbatim}
+\item \texttt{miterLimit} : useful when \texttt{lineJoin = "miter"} - renders the
+line as if \texttt{lineJoin} was set to \texttt{bevel}.
+\end{itemize}
 
 \section{Drawing Tips - Recap}
 \begin{itemize}
@@ -1428,7 +1447,8 @@ to get a key-value object from a JSON object.
 
 \section{The File API}
 Designed to work with files on server-side in JavaScript. See
-\texttt{FilesAPI/files.html} inside the HTML5 coding directory for an example
+\href{http://pdata.altervista.org/HTML5/files/files.html}{this web page}
+for an example
 that uses this api to load images on the HTML5 document from images on the
 hard disk. Notes about this code:
 \begin{itemize}
@@ -1626,9 +1646,10 @@ See an example at:
 
     \section{<figure>}
     It allows inner <figcaption>. See
-    \begin{verse}
-~/Coding/HTML5\_edX/someHTML/Audio/audio\_transitions.html and audio\_transitions.css
-	\end{verse}
+    \href{http://pdata.altervista.org/HTML5/audio/audio_transitions.html}
+    {this page}, together with its
+    \href{http://pdata.altervista.org/HTML5/audio/audio_transitions.css}
+    {.css styling file}.
 
 	\section{<code>}
 	Used to type code: fixed size font.
